@@ -1,17 +1,44 @@
 /** @jsx jsx */
-import './App.css';
 import {css, jsx} from '@emotion/core'
 
-function App() {
-  return (
-    <div
-      css={css`
-      background-color: hotpink;
-    `}
-    >
-      Hello
-    </div>
-  );
-}
+const App = () => {
+  // const [sellPrice, setSellPrice] = useState(15)
 
-export default App;
+  return (
+    <div>
+      <table
+        css={css`
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+          td,
+          th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+          }
+
+          tr:nth-child(even) {
+            background-color: #dddddd;
+          }
+        `}>
+        <tr>
+          <th>Name</th>
+          <th>Value</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td>{'1231'}</td>
+          <td>Smith</td>
+          <td>50</td>
+        </tr>
+        <tr>
+          <td>Eve</td>
+          <td>Jackson</td>
+          <td>94</td>
+        </tr>
+      </table>
+    </div>
+  )
+}
+export default App
