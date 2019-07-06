@@ -1,9 +1,14 @@
-import React from 'react';
+/** @jsx jsx */
 import './App.css';
+import {css, jsx} from '@emotion/core'
 
 function App() {
   return (
-    <div className="App">
+    <div
+      css={css`
+      background-color: hotpink;
+    `}
+    >
       Hello
     </div>
   );
