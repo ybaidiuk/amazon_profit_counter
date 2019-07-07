@@ -30,6 +30,10 @@ const App = () => {
   const [transportPrice, setTransportPrice] = useState(0.6)
 
   const profitBrutto = sellPrice - amazonTotal - bayPrice - transportPrice
+  const returnLoss = amazonFee * 0.03 * 1.19 + amazonDelivery + bayPrice + transportPrice
+
+  const [returnPercent, setReturnPercent] = useState(0.03)
+  const profitNetto = profitBrutto * (1 - returnPercent) - returnPercent * returnLoss
 
   return (
     <div>
@@ -43,36 +47,61 @@ const App = () => {
           <tr>
             <td>Sell Price</td>
             <td>
-              <TextField value={sellPrice} onChange={e => setSellPrice(e.target.value)} type='number' />
+              <TextField value={sellPrice} onChange={e => setSellPrice(parseFloat(e.target.value))} type='number' />
             </td>
           </tr>
           <tr>
             <td>Bay Price</td>
             <td>
-              <TextField value={bayPrice} onChange={e => setBayPrice(e.target.value)} type='number' />
+              <TextField value={bayPrice} onChange={e => setBayPrice(parseFloat(e.target.value))} type='number' />
             </td>
           </tr>
           <tr>
             <td>Amazon</td>
             <td>
+              <TextField label={'Total'} value={amazonTotal} disabled />
               <TextField label={'Delivery'} value={amazonDelivery} disabled />
               <TextField label={'Fee'} value={amazonFee} disabled />
-            </td>
-            <td>
-              <TextField label={'Total'} value={amazonTotal} disabled />
             </td>
           </tr>
           <tr>
             <td>Transport Price</td>
             <td>
-              <TextField value={transportPrice} onChange={e => setTransportPrice(e.target.value)} disabled />
+              <TextField
+                value={transportPrice}
+                onChange={e => setTransportPrice(parseFloat(e.target.value))}
+                type='number'
+              />
             </td>
             <td>from Poland + to Amazon</td>
+          </tr>
+          <tr>
+            <td>Return percent</td>
+            <td>
+              <TextField
+                value={returnPercent}
+                onChange={e => setReturnPercent(parseFloat(e.target.value))}
+                type='number'
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>Return loss</td>
+            <td>
+              <TextField value={round(returnLoss)} disabled />
+            </td>
           </tr>
           <tr>
             <td>Profit Brutto</td>
             <td>
               <TextField value={round(profitBrutto)} disabled />
+            </td>
+            <td>€ without return loss</td>
+          </tr>
+          <tr>
+            <td>Profit Netto</td>
+            <td>
+              <TextField value={round(profitNetto)} disabled />
             </td>
             <td>€ without return loss</td>
           </tr>
