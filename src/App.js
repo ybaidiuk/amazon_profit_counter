@@ -3,6 +3,7 @@ import {css, jsx} from '@emotion/core'
 import {useState} from 'react'
 import TextField from '@material-ui/core/TextField'
 import {round} from './utils'
+import Bar from './components/Bar'
 
 const tableStyle = css`
   font-family: arial, sans-serif;
@@ -37,6 +38,7 @@ const App = () => {
 
   return (
     <div>
+      <Bar />
       <table css={tableStyle}>
         <tbody>
           <tr>

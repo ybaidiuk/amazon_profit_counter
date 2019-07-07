@@ -1,6 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+/** @jsx jsx */
+import {css, jsx} from '@emotion/core'
+import ReactDOM from 'react-dom'
+import App from './App'
 
-ReactDOM.render(<App/>, document.getElementById('root'));
+ReactDOM.render(
+  <App
+    css={css`
+      body {
+        margin: 0;
+      }
+    `}
+  />,
+  document.getElementById('root')
+)
