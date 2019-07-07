@@ -1,5 +1,7 @@
 .idea/
 /node_modules
 /build
+.firebase/
 yarn-debug.log*
 yarn-error.log
+.DS_Store
